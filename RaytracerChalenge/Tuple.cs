@@ -44,9 +44,24 @@ namespace Raytracer
             return new Tuple(x, y, z, 1.0);
         }
 
-        static public Tuple Vector(double x, double y, double z)
+        public static Tuple Vector(double x, double y, double z)
         {
             return new Tuple(x, y, z, 0.0);
+        }
+
+        public static Tuple Zero()
+        {
+            return new Tuple(0.0, 0.0, 0.0, 0.0);
+        }
+
+        public static Tuple operator- (Tuple tuple)
+        {
+            tuple.x = -tuple.x;
+            tuple.y = -tuple.y;
+            tuple.z = -tuple.z;
+            tuple.w = tuple.w;
+
+            return tuple;
         }
         #endregion
 
@@ -103,8 +118,15 @@ namespace Raytracer
             this.z -= t.z;
             this.w -= t.w;
 
+            if (this.Compare(this.w, -1.0))
+            {
+                throw new System.InvalidOperationException("Substract a point of a vector is an invalid operation");
+            }
+
             return this;
         }
+
+
         #endregion
     }
    

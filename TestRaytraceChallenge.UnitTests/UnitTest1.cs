@@ -123,6 +123,31 @@ namespace Tests
             //Assert
             Assert.That(testDelegate, Throws.TypeOf<System.InvalidOperationException>());
         }
+        [Test]
+        public void Test_Substract_SubAPoinFromAVectorRaiseAnException()
+        {
+            var t1 = Tuple.Vector(4.3, -4.2, 3.1);
+            var t2 = Tuple.Point(-4.3, 4.2, -3.1);
+
+
+            //Act
+            ActualValueDelegate<object> testDelegate = () => t1.Substract(t2);
+
+            //Assert
+            Assert.That(testDelegate, Throws.TypeOf<System.InvalidOperationException>());
+        }
+
+        [Test]
+        public void Test_NegationOperator_YouGetANegateTuple()
+        {
+            var t1 = new Tuple(4.3, -4.2, 3.1, 1.0);
+            t1 = -t1;
+            Assert.LessOrEqual(-4.3 - t1.x, Epsilon);
+            Assert.LessOrEqual(4.2 - t1.y, Epsilon);
+            Assert.LessOrEqual(-3.1 - t1.z, Epsilon);
+
+            Assert.LessOrEqual(1.0 - t1.w, Epsilon);
+        }
     }
 
 }
