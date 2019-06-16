@@ -148,6 +148,18 @@ namespace Tests
 
             Assert.LessOrEqual(1.0 - t1.w, Epsilon);
         }
+
+        [Test]
+        public void Test_ScalarMultiplication_GetDoubleLongituded()
+        {
+            var t1 = new Tuple(4.3, -4.2, 3.1, 1.0);
+            t1 = 2 * t1;
+            Assert.LessOrEqual(8.6 - t1.x, Epsilon);
+            Assert.LessOrEqual(-8.4 - t1.y, Epsilon);
+            Assert.LessOrEqual(6.2 - t1.z, Epsilon);
+
+            Assert.LessOrEqual(1.0 - t1.w, Epsilon);
+        }
     }
 
 }

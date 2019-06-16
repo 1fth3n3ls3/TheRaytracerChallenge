@@ -63,6 +63,21 @@ namespace Raytracer
 
             return tuple;
         }
+
+        public static Tuple operator *(double scalar, Tuple tuple)
+        {
+            tuple.x = scalar * tuple.x;
+            tuple.y = scalar * tuple.y;
+            tuple.z = scalar * tuple.z;
+            tuple.w = tuple.w;
+
+            return tuple;
+        }
+
+        public static Tuple operator *(Tuple tuple, double scalar)
+        {
+            return scalar * tuple;
+        }
         #endregion
 
         #region Methods
