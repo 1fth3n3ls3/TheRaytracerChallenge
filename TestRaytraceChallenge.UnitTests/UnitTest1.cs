@@ -160,6 +160,18 @@ namespace Tests
 
             Assert.LessOrEqual(1.0 - t1.w, Epsilon);
         }
+
+        [Test]
+        public void Test_ScalarDivision_GetHalfLongituded()
+        {
+            var t1 = new Tuple(4.3, -4.2, 3.1, 1.0);
+            t1 = t1 / 2;
+            Assert.LessOrEqual(2.15 - t1.x, Epsilon);
+            Assert.LessOrEqual(-2.1 - t1.y, Epsilon);
+            Assert.LessOrEqual(1.55 - t1.z, Epsilon);
+
+            Assert.LessOrEqual(1.0 - t1.w, Epsilon);
+        }
     }
 
 }
