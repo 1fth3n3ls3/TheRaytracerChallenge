@@ -172,6 +172,19 @@ namespace Tests
 
             Assert.LessOrEqual(1.0 - t1.w, Epsilon);
         }
+
+        [Test]
+        public void Test_Length_GetLenghtOfAVector()
+        {
+            var t1 = new Tuple(1, 0, 0, 0.0);
+
+            var length = t1.Length();
+
+            Assert.LessOrEqual(1.0 - length, Epsilon);
+
+
+
+        }
     }
 
 }

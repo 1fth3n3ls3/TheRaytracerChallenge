@@ -151,6 +151,11 @@ namespace Raytracer
             return this;
         }
 
+        public Double Length()
+        {
+
+            return (Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2)));
+        }
 
         #endregion
     }
