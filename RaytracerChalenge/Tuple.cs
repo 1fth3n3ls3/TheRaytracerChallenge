@@ -8,10 +8,10 @@ namespace Raytracer
 
     public interface ITuple
     {
-        double x { get; }
-        double y { get; }
-        double z { get; }
-        double w { get; }
+        double X { get; }
+        double Y { get; }
+        double Z { get; }
+        double W { get; }
 
         bool IsVector();
         bool IsPoint();
@@ -22,31 +22,31 @@ namespace Raytracer
         private const double Epsilon = 0.00001;
 
         #region Fields
-        public double x { get; set; }
-        public double y { get; set; }
-        public double z { get; set; }
-        public double w { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Z { get; set; }
+        public double W { get; set; }
         #endregion
 
         #region Constructor
-        public Tuple(double x, double y, double z, double w)
+        public Tuple(double X, double Y, double Z, double W)
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-            this.w = w;
+            this.X = X;
+            this.Y = Y;
+            this.Z = Z;
+            this.W = W;
         }
 
         #endregion
         #region Static Methods
-        static public Tuple Point(double x, double y, double z)
+        static public Tuple Point(double X, double Y, double Z)
         {
-            return new Tuple(x, y, z, 1.0);
+            return new Tuple(X, Y, Z, 1.0);
         }
 
-        public static Tuple Vector(double x, double y, double z)
+        public static Tuple Vector(double X, double Y, double Z)
         {
-            return new Tuple(x, y, z, 0.0);
+            return new Tuple(X, Y, Z, 0.0);
         }
 
         public static Tuple Zero()
@@ -56,20 +56,20 @@ namespace Raytracer
 
         public static Tuple operator- (Tuple tuple)
         {
-            tuple.x = -tuple.x;
-            tuple.y = -tuple.y;
-            tuple.z = -tuple.z;
-            tuple.w = tuple.w;
+            tuple.X = -tuple.X;
+            tuple.Y = -tuple.Y;
+            tuple.Z = -tuple.Z;
+            tuple.W = tuple.W;
 
             return tuple;
         }
 
         public static Tuple operator *(double scalar, Tuple tuple)
         {
-            tuple.x = scalar * tuple.x;
-            tuple.y = scalar * tuple.y;
-            tuple.z = scalar * tuple.z;
-            tuple.w = tuple.w;
+            tuple.X = scalar * tuple.X;
+            tuple.Y = scalar * tuple.Y;
+            tuple.Z = scalar * tuple.Z;
+            tuple.W = tuple.W;
 
             return tuple;
         }
@@ -81,10 +81,10 @@ namespace Raytracer
 
         public static Tuple operator /(Tuple tuple, double scalar)
         {
-            tuple.x = tuple.x / scalar;
-            tuple.y = tuple.y / scalar;
-            tuple.z = tuple.z / scalar;
-            tuple.w = tuple.w;
+            tuple.X = tuple.X / scalar;
+            tuple.Y = tuple.Y / scalar;
+            tuple.Z = tuple.Z / scalar;
+            tuple.W = tuple.W;
 
             return tuple;
         }
@@ -93,12 +93,12 @@ namespace Raytracer
         #region Methods
         public bool IsVector()
         {
-            return this.w == 0.0;
+            return this.W == 0.0;
         }
 
         public bool IsPoint()
         {
-            return this.w == 1.0;
+            return this.W == 1.0;
         }
 
         public override bool Equals(Object obj)
@@ -111,7 +111,7 @@ namespace Raytracer
             else
             {
                 Tuple t = (Tuple)obj;
-                return Compare(x, t.x) && Compare(y, t.y) && Compare(z, t.z) && Compare(w, t.w);
+                return Compare(X, t.X) && Compare(Y, t.Y) && Compare(Z, t.Z) && Compare(W, t.W);
             }
         }
 
@@ -123,12 +123,12 @@ namespace Raytracer
 
         public Tuple Add(Tuple t)
         {
-            this.x += t.x;
-            this.y += t.y;
-            this.z += t.z;
-            this.w += t.w;
+            this.X += t.X;
+            this.Y += t.Y;
+            this.Z += t.Z;
+            this.W += t.W;
 
-            if (this.Compare(this.w, 2.0))
+            if (this.Compare(this.W, 2.0))
             {
                 throw new System.InvalidOperationException("Sum 2 points is an invalid operation");
             }
@@ -138,12 +138,12 @@ namespace Raytracer
 
         public Tuple Substract(Tuple t)
         {
-            this.x -= t.x;
-            this.y -= t.y;
-            this.z -= t.z;
-            this.w -= t.w;
+            this.X -= t.X;
+            this.Y -= t.Y;
+            this.Z -= t.Z;
+            this.W -= t.W;
 
-            if (this.Compare(this.w, -1.0))
+            if (this.Compare(this.W, -1.0))
             {
                 throw new System.InvalidOperationException("Substract a point of a vector is an invalid operation");
             }
@@ -154,7 +154,7 @@ namespace Raytracer
         public Double Length()
         {
 
-            return (Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2)));
+            return (Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2) + Math.Pow(Z, 2)));
         }
 
         public Tuple Normalize()
@@ -163,9 +163,9 @@ namespace Raytracer
             //TDOO: filter to normalize only vectors
             var length = this.Length();
 
-            x = x/length;
-            y = y/length;
-            z = z/length;
+            X = X/length;
+            Y = Y/length;
+            Z = Z/length;
 
 
             return this;
@@ -173,10 +173,10 @@ namespace Raytracer
 
         public static double Dot(Tuple a, Tuple b)
         {
-            return  a.x * b.x +
-                    a.y * b.y +
-                    a.z * b.z +
-                    a.w * b.w;
+            return  a.X * b.X +
+                    a.Y * b.Y +
+                    a.Z * b.Z +
+                    a.W * b.W;
         }
 
         #endregion
