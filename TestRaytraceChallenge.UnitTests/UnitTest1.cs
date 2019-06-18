@@ -185,13 +185,26 @@ namespace Tests
         }
 
         [Test]
-        public void Test_Normalize_GetNormalizedVector()
+        public void Normalize_WhenCall_GetNormalizedVector()
         {
             var t1 = new Tuple(1, 2, 3, 0.0);
             var tNormalized = t1.Normalize();
             Assert.LessOrEqual(0.26726 - tNormalized.x, Epsilon);
             Assert.LessOrEqual(0.53452 - tNormalized.y, Epsilon);
             Assert.LessOrEqual(0.80178 - tNormalized.z, Epsilon);
+        }
+
+        [Test]
+        public void Dot_WhenCall_GetANumber()
+        {
+            var a = Tuple.Vector(1, 2, 3);
+            var b = Tuple.Vector(2, 3, 4);
+
+            double result = Tuple.Dot(a, b);
+
+            Assert.LessOrEqual(20 - result, Epsilon);
+
+
 
         }
     }
