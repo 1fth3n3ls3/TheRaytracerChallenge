@@ -157,6 +157,20 @@ namespace Raytracer
             return (Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2)));
         }
 
+        public Tuple Normalize()
+        {
+            //TODO: Maybe this should return another object or the same object. Study what would be optimal.
+            //TDOO: filter to normalize only vectors
+            var length = this.Length();
+
+            x = x/length;
+            y = y/length;
+            z = z/length;
+
+
+            return this;
+        }
+
         #endregion
     }
    

@@ -174,6 +174,7 @@ namespace Tests
         }
 
         [Test]
+        //Use test cases to cover other variants
         public void Test_Length_GetLenghtOfAVector()
         {
             var t1 = new Tuple(1, 0, 0, 0.0);
@@ -181,8 +182,16 @@ namespace Tests
             var length = t1.Length();
 
             Assert.LessOrEqual(1.0 - length, Epsilon);
+        }
 
-
+        [Test]
+        public void Test_Normalize_GetNormalizedVector()
+        {
+            var t1 = new Tuple(1, 2, 3, 0.0);
+            var tNormalized = t1.Normalize();
+            Assert.LessOrEqual(0.26726 - tNormalized.x, Epsilon);
+            Assert.LessOrEqual(0.53452 - tNormalized.y, Epsilon);
+            Assert.LessOrEqual(0.80178 - tNormalized.z, Epsilon);
 
         }
     }
