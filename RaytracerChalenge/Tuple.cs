@@ -62,22 +62,12 @@ namespace Raytracer
         #region Operators
         public static Tuple operator- (Tuple tuple)
         {
-            tuple.X = -tuple.X;
-            tuple.Y = -tuple.Y;
-            tuple.Z = -tuple.Z;
-            tuple.W = tuple.W;
-
-            return tuple;
+            return new Tuple(-tuple.X, -tuple.Y, -tuple.Z, tuple.W);
         }
 
         public static Tuple operator *(double scalar, Tuple tuple)
         {
-            tuple.X = scalar * tuple.X;
-            tuple.Y = scalar * tuple.Y;
-            tuple.Z = scalar * tuple.Z;
-            tuple.W = tuple.W;
-
-            return tuple;
+            return new Tuple(tuple.X * scalar, tuple.Y * scalar, tuple.Z * scalar, tuple.W);
         }
 
         public static Tuple operator *(Tuple tuple, double scalar)
@@ -87,12 +77,7 @@ namespace Raytracer
 
         public static Tuple operator /(Tuple tuple, double scalar)
         {
-            tuple.X = tuple.X / scalar;
-            tuple.Y = tuple.Y / scalar;
-            tuple.Z = tuple.Z / scalar;
-            tuple.W = tuple.W;
-
-            return tuple;
+            return new Tuple(tuple.X / scalar, tuple.Y / scalar, tuple.Z / scalar, tuple.W);
         }
         #endregion
 
@@ -129,32 +114,27 @@ namespace Raytracer
 
         public Tuple Add(Tuple t)
         {
-            this.X += t.X;
-            this.Y += t.Y;
-            this.Z += t.Z;
-            this.W += t.W;
+            var tuple = new Tuple(X + t.X, Y + t.Y, Z + t.Z, W + t.W);
 
-            if (this.Compare(this.W, 2.0))
+            if (this.Compare(tuple.W, 2.0))
             {
                 throw new System.InvalidOperationException("Sum 2 points is an invalid operation");
             }
 
-            return this;
+            return tuple;
         }
 
         public Tuple Substract(Tuple t)
         {
-            this.X -= t.X;
-            this.Y -= t.Y;
-            this.Z -= t.Z;
-            this.W -= t.W;
+            var tuple = new Tuple(X - t.X, Y - t.Y, Z - t.Z, W - t.W);
 
-            if (this.Compare(this.W, -1.0))
+
+            if (this.Compare(tuple.W, -1.0))
             {
                 throw new System.InvalidOperationException("Substract a point of a vector is an invalid operation");
             }
 
-            return this;
+            return tuple;
         }
 
         public Double Length()
@@ -169,12 +149,7 @@ namespace Raytracer
             //TDOO: filter to normalize only vectors
             var length = this.Length();
 
-            X = X/length;
-            Y = Y/length;
-            Z = Z/length;
-
-
-            return this;
+            return Vector(X / length, Y / length, Z / length);
         }
 
         public static double Dot(Tuple a, Tuple b)

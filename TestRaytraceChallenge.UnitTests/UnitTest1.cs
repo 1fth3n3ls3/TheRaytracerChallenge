@@ -87,11 +87,11 @@ namespace Tests
 
             var result = t1.Add(t2);
 
-            Assert.LessOrEqual(0.0 - t1.X, Epsilon);
-            Assert.LessOrEqual(0.0 - t1.Y, Epsilon);
-            Assert.LessOrEqual(0.0 - t1.Z, Epsilon);
+            Assert.LessOrEqual(0.0 - result.X, Epsilon);
+            Assert.LessOrEqual(0.0 - result.Y, Epsilon);
+            Assert.LessOrEqual(0.0 - result.Z, Epsilon);
 
-            Assert.LessOrEqual(1.0 - t1.W, Epsilon);
+            Assert.LessOrEqual(1.0 - result.W, Epsilon);
         }
 
         [Test]
@@ -102,11 +102,11 @@ namespace Tests
 
             var result = t1.Add(t2);
 
-            Assert.LessOrEqual(0.0 - t1.X, Epsilon);
-            Assert.LessOrEqual(0.0 - t1.Y, Epsilon);
-            Assert.LessOrEqual(0.0 - t1.Z, Epsilon);
+            Assert.LessOrEqual(0.0 - result.X, Epsilon);
+            Assert.LessOrEqual(0.0 - result.Y, Epsilon);
+            Assert.LessOrEqual(0.0 - result.Z, Epsilon);
 
-            Assert.LessOrEqual(0.0 - t1.W, Epsilon);
+            Assert.LessOrEqual(0.0 - result.W, Epsilon);
         }
 
         [Test]
@@ -141,24 +141,24 @@ namespace Tests
         public void Test_NegationOperator_YouGetANegateTuple()
         {
             var t1 = new Tuple(4.3, -4.2, 3.1, 1.0);
-            t1 = -t1;
-            Assert.LessOrEqual(-4.3 - t1.X, Epsilon);
-            Assert.LessOrEqual(4.2 - t1.Y, Epsilon);
-            Assert.LessOrEqual(-3.1 - t1.Z, Epsilon);
+            var result = -t1;
+            Assert.LessOrEqual(-4.3 - result.X, Epsilon);
+            Assert.LessOrEqual(4.2 - result.Y, Epsilon);
+            Assert.LessOrEqual(-3.1 - result.Z, Epsilon);
 
-            Assert.LessOrEqual(1.0 - t1.W, Epsilon);
+            Assert.LessOrEqual(1.0 - result.W, Epsilon);
         }
 
         [Test]
         public void Test_ScalarMultiplication_GetDoubleLongituded()
         {
             var t1 = new Tuple(4.3, -4.2, 3.1, 1.0);
-            t1 = 2 * t1;
-            Assert.LessOrEqual(8.6 - t1.X, Epsilon);
-            Assert.LessOrEqual(-8.4 - t1.Y, Epsilon);
-            Assert.LessOrEqual(6.2 - t1.Z, Epsilon);
+            var result = 2 * t1;
+            Assert.LessOrEqual(8.6 - result.X, Epsilon);
+            Assert.LessOrEqual(-8.4 - result.Y, Epsilon);
+            Assert.LessOrEqual(6.2 - result.Z, Epsilon);
 
-            Assert.LessOrEqual(1.0 - t1.W, Epsilon);
+            Assert.LessOrEqual(1.0 - result.W, Epsilon);
         }
 
         [Test]
