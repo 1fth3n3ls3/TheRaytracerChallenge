@@ -8,10 +8,14 @@ namespace Raytracer
 
     public interface ITuple
     {
+        #region Properties
         double X { get; }
         double Y { get; }
         double Z { get; }
         double W { get; }
+
+        #endregion
+
 
         bool IsVector();
         bool IsPoint();
@@ -21,7 +25,7 @@ namespace Raytracer
     {
         private const double Epsilon = 0.00001;
 
-        #region Fields
+        #region Properties
         public double X { get; set; }
         public double Y { get; set; }
         public double Z { get; set; }
@@ -38,7 +42,7 @@ namespace Raytracer
         }
 
         #endregion
-        #region Static Methods
+        #region Factories
         static public Tuple Point(double X, double Y, double Z)
         {
             return new Tuple(X, Y, Z, 1.0);
@@ -53,7 +57,9 @@ namespace Raytracer
         {
             return new Tuple(0.0, 0.0, 0.0, 0.0);
         }
+        #endregion
 
+        #region Operators
         public static Tuple operator- (Tuple tuple)
         {
             tuple.X = -tuple.X;
@@ -177,6 +183,13 @@ namespace Raytracer
                     a.Y * b.Y +
                     a.Z * b.Z +
                     a.W * b.W;
+        }
+
+        public static Tuple Cross(Tuple a, Tuple b)
+        {
+            return Vector(a.Y * b.Z - a.Z * b.Y,
+                          a.Z * b.X - a.X * b.Z,
+                          a.X * b.Y - a.Y * b.X);
         }
 
         #endregion

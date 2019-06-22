@@ -203,9 +203,20 @@ namespace Tests
             double result = Tuple.Dot(a, b);
 
             Assert.LessOrEqual(20 - result, Epsilon);
+        }
 
+        [Test]
+        public void Cross_WhenCall_ReturnANewVector()
+        {
+            var a = Tuple.Vector(1, 2, 3);
+            var b = Tuple.Vector(2, 3, 4);
+            Tuple crossVector = Tuple.Cross(a, b);
 
+            Assert.LessOrEqual(-1.0 - crossVector.X, Epsilon);
+            Assert.LessOrEqual(2.0 - crossVector.Y, Epsilon);
+            Assert.LessOrEqual(-1.0 - crossVector.Z, Epsilon);
 
+            Assert.LessOrEqual(0.0 - crossVector.W, Epsilon);
         }
     }
 
