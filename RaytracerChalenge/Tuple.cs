@@ -65,6 +65,18 @@ namespace Raytracer
             return new Tuple(-tuple.X, -tuple.Y, -tuple.Z, tuple.W);
         }
 
+        public static Tuple operator+ (Tuple a, Tuple b)
+        {
+            var tuple = new Tuple(a.X + b.X, a.Y + b.Y, a.Z + b.Z, a.W + b.W);
+
+            if (this.Compare(tuple.W, 2.0))
+            {
+                throw new System.InvalidOperationException("Sum 2 points is an invalid operation");
+            }
+
+            return tuple;
+        }
+
         public static Tuple operator *(double scalar, Tuple tuple)
         {
             return new Tuple(tuple.X * scalar, tuple.Y * scalar, tuple.Z * scalar, tuple.W);
