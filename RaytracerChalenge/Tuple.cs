@@ -182,11 +182,5 @@ namespace Raytracer
         #endregion
     }
 
-    //public class Color : Tuple
-    //{
-    //    public Color(double r, double g, double b, double a)
-           
-    //    {
-    //    }
-    //}
+    
 }

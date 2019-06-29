@@ -10,6 +10,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestRaytraceChallenge.UnitT
 		{4F7CE581-0B0C-488B-830F-93CB8FD20A69} = {4F7CE581-0B0C-488B-830F-93CB8FD20A69}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestRaytraceChallenge.UnitTests", "XUnitTestRaytraceChallenge.UnitTests\XUnitTestRaytraceChallenge.UnitTests.csproj", "{F86E219F-C07F-41A4-9ADB-CAEB023CAFE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{A53E903D-66F3-4776-A469-34A7F76A4AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A53E903D-66F3-4776-A469-34A7F76A4AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A53E903D-66F3-4776-A469-34A7F76A4AEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F86E219F-C07F-41A4-9ADB-CAEB023CAFE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F86E219F-C07F-41A4-9ADB-CAEB023CAFE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F86E219F-C07F-41A4-9ADB-CAEB023CAFE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F86E219F-C07F-41A4-9ADB-CAEB023CAFE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
