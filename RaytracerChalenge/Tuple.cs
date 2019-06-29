@@ -14,11 +14,11 @@ namespace Raytracer
         double Z { get; }
         double W { get; }
 
-        #endregion
-
-
         bool IsVector();
         bool IsPoint();
+
+
+        #endregion
     }
 
     public class Tuple : ITuple
@@ -33,24 +33,24 @@ namespace Raytracer
         #endregion
 
         #region Constructor
-        public Tuple(double X, double Y, double Z, double W)
+        public Tuple(double x, double y, double z, double w)
         {
-            this.X = X;
-            this.Y = Y;
-            this.Z = Z;
-            this.W = W;
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
+            this.W = w;
         }
 
         #endregion
         #region Factories
-        static public Tuple Point(double X, double Y, double Z)
+        static public Tuple Point(double x, double y, double z)
         {
-            return new Tuple(X, Y, Z, 1.0);
+            return new Tuple(x, y, z, 1.0);
         }
 
-        public static Tuple Vector(double X, double Y, double Z)
+        public static Tuple Vector(double x, double y, double z)
         {
-            return new Tuple(X, Y, Z, 0.0);
+            return new Tuple(x, y, z, 0.0);
         }
 
         public static Tuple Zero()
@@ -69,7 +69,7 @@ namespace Raytracer
         {
             var tuple = new Tuple(a.X + b.X, a.Y + b.Y, a.Z + b.Z, a.W + b.W);
 
-            if (this.Compare(tuple.W, 2.0))
+            if (tuple.Compare(tuple.W, 2.0))
             {
                 throw new System.InvalidOperationException("Sum 2 points is an invalid operation");
             }
@@ -103,7 +103,7 @@ namespace Raytracer
         {
             return this.W == 1.0;
         }
-
+        //TODO: Override GetHash function
         public override bool Equals(Object obj)
         {
             //Check for null and compare run-time types.
@@ -181,5 +181,12 @@ namespace Raytracer
 
         #endregion
     }
-   
+
+    //public class Color : Tuple
+    //{
+    //    public Color(double r, double g, double b, double a)
+           
+    //    {
+    //    }
+    //}
 }
