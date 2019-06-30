@@ -6,6 +6,8 @@ namespace Raytracer
 {
     public class Color
     {
+        private const double Epsilon = 0.00001;
+
         #region Properties
         public double R { get; set; }
         public double G { get; set; }
@@ -22,6 +24,25 @@ namespace Raytracer
             A = a;
         }
         #endregion
+        public override bool Equals(Object obj)
+        {
+            //Check for null and compare run-time types.
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                Color c = (Color)obj;
+                return Compare(R, c.R) && Compare(G, c.G) && Compare(B, c.B) && Compare(A, c.A);
+            }
+        }
+
+        private bool Compare(double a, double b)
+        {
+            var difference = Math.Abs(a - b);
+            return Epsilon >= difference;
+        }
 
         #region Operators
         public static Color operator +(Color c1, Color c2)

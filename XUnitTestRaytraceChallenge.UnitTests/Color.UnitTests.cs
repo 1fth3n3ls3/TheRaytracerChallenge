@@ -4,7 +4,7 @@ using Raytracer;
 
 namespace XUnitTestRaytraceChallenge.UnitTests
 {
-    public class UnitTest1
+    public class Color_Tests
     {
         [Fact]
         public void Color_ConstructorTest_AssignParameter2Properties()
